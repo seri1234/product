@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 削除画面
+  h2 記事一覧
+  each post in Postdb
+    p タイトル: #{post.title}
+    p 本文: #{post.content}
+    p 投稿日時: #{post.createdAt}
+      form(method="post" action="/delete/delete")
+        input(type="hidden" name="id" value=post.id)
+        button(type="submit") 削除
+    hr

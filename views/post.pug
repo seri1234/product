@@ -1,0 +1,14 @@
+extends layout
+
+block content
+ h1 新規記事投稿
+ form(method="post" action="/posts/new")
+   div
+     h5 タイトル
+     input(type="text" name="title")
+   div
+     h5 本文
+   div.form-group
+     textarea(name="content" rows="10").form-control
+   div.form-group
+     button(type="submit").btn.btn-primary 投稿

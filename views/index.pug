@@ -1,5 +1,16 @@
 extends layout
-
+ 
 block content
-  h1= title
-  p Welcome to #{title}
+ div.jumbotron.my-3
+  h1.display-4 ブログ
+  p.lead このブログは、BASIC認証ができ、記事投稿、記事削除ログイン・ログアウトができるサービスです
+  div
+    a(href="/delete").btn.btn-info.float-right 記事削除
+  div
+    a(href="/posts").btn.btn-info.float-right 新規投稿
+  h2 記事一覧
+  each post in Postdb
+     p タイトル: #{post.title}
+     p 本文: #{post.content}
+     p 投稿日時: #{post.createdAt}
+     hr
