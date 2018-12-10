@@ -3,12 +3,13 @@ var express = require('express');
 var router = express.Router();
 var Postdb  = require('../models/postdb');
 
+//basic auth
 var basicAuth = require('basic-auth-connect');
-
 router.use(basicAuth('user', 'passw0rD'));
 
+
+//Delete page
 router.get('/', function(req, res, next) {
-  console.log(req.body); // ログ
   Postdb.findAll({ order: [['id', 'DESC']] }).then((Postdb) => {
     res.render('delete', {
       Postdb: Postdb
@@ -16,6 +17,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+//Delete API
 router.post('/delete', (req, res, next) =>{
           Postdb.findById(req.body.id).then((Postdb) => {
               Postdb.destroy().then(() => {

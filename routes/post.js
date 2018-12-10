@@ -6,18 +6,23 @@ var router = express.Router();
 
 var Postdb  = require('../models/postdb');
 
-/*basic auth*/
-var basicAuth = require('basic-auth-connect');
-router.use(basicAuth('user', 'passw0rD'));
 
+//basic auth
+var basicAuth = require('basic-auth-connect');                  //test 
+router.use(basicAuth('user', 'passw0rD'));                      //test
+
+//Post page
 router.get('/',(req, res, next) => {
   console.log(req.body); // ログ
-  res.render('post', { user: req.user });
+  res.render('post', {
+    
+  });
 });
 
+//Post API
 router.post('/new', (req, res, next) => {
 console.log(req.body); // ログ
-    Postdb.create({
+  Postdb.create({
       　title: req.body.title.slice(0, 255),
         content: req.body.content,
       }).then(() => {

@@ -9,5 +9,5 @@ block content
     p 投稿日時: #{post.createdAt}
       form(method="post" action="/delete/delete")
         input(type="hidden" name="id" value=post.id)
-        button(type="submit") 削除
+        button(type="submit").btn.btn-danger 削除
     hr
