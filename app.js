@@ -6,7 +6,6 @@ var helmet = require('helmet');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
-var users = require('./routes/users');
 var post  = require('./routes/post');
 var Postdb = require('./models/postdb');
 var PostDelete = require('./routes/delete');
@@ -32,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
 app.use('/posts', post);
 app.use('/delete', PostDelete);
 
