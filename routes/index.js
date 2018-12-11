@@ -18,12 +18,12 @@ router.get('/logout', function(req, res, next) {
   res.writeHead(401, {
     'Content-Type': 'text/html; charset=utf-8'
   });
-    res.end('<!DOCTYPE html><html lang="ja"><body>' +
-      '<h1>ログアウトしました</h1>' +
-      '<a href="/">メインページへ</a>' +
-      '</body></html>'
+   res.end('<!DOCTYPE html><html lang="ja"><body>' +
+    '<h1>ログアウトしました</h1>' +
+    '<a href="/">メインページへ</a>' +
+    '</body></html>'
 
-);
+ );
 });
 
 

@@ -1,16 +1,28 @@
 'use strict';
-const request = require('supertest');
-const app = require('../app');
+var request = require('supertest');
+var app = require('../app');
+var Postdb  = require('../models/postdb');
+var basicAuth = require('basic-auth-connect');
 
-describe('/posts', () => {
+//認証機能は外した状態でテストです
 
-  it('ログインのためのリンクが含まれる', (done) => {
-    request(app)
-      .get('/posts')
-      .auth('user', 'passw0rD')
-      .expect('Content-Type', 'text/html; charset=utf-8')
-      .expect(/記事投稿画面/)
+describe('テスト', () => {
+    it('ブログに書き込み後、リダイレクトされる', (done) => {
+      request(app)
+      .auth(basicauth,{user,node})
+      .post('/posts/new')
+      .send({ title: '自動テストタイトル', content: '自動テスト本文' })
+      .expect('Location', '/')
+      .expect(302, done);
+    });
+
+
+    it('書き込んだ内容がメインページに反映される', (done) => {
+      request(app)
+      .get('/')
+      .expect(/自動テストタイトル/)
+      .expect(/自動テスト本文/)
       .expect(200, done);
-  });
+    });
 
 });
