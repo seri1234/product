@@ -1,7 +1,7 @@
 'use strict';
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize(
-  'postgres://postgres:postgres@localhost/product',
+  process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost/product',
   {
     logging: false,
     operatorsAliases: false 

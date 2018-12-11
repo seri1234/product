@@ -1,0 +1,7 @@
+{
+  "name": "product-blog",
+  "description": "成果物ブログシステム",
+  "logo": "",
+  "keywords": ["node"],
+  "image": "heroku/nodejs"
+}
